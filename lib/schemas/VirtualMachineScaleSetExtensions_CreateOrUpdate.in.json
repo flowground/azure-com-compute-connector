@@ -1,0 +1,94 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmScaleSetName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmssExtensionName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Describes a Virtual Machine Scale Set Extension.",
+            "properties": {
+                "name": {
+                    "description": "The name of the extension.",
+                    "type": "string"
+                },
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Describes the properties of a Virtual Machine Scale Set Extension.",
+                    "properties": {
+                        "autoUpgradeMinorVersion": {
+                            "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.",
+                            "type": "boolean"
+                        },
+                        "forceUpdateTag": {
+                            "description": "If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.",
+                            "type": "string"
+                        },
+                        "protectedSettings": {
+                            "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.",
+                            "type": "object"
+                        },
+                        "provisionAfterExtensions": {
+                            "description": "Collection of extension names after which this extension needs to be provisioned.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state, which only appears in the response.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "publisher": {
+                            "description": "The name of the extension handler publisher.",
+                            "type": "string"
+                        },
+                        "settings": {
+                            "description": "Json formatted public settings for the extension.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\".",
+                            "type": "string"
+                        },
+                        "typeHandlerVersion": {
+                            "description": "Specifies the version of the script handler.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "location": {
+            "required": true,
+            "type": "string"
+        },
+        "publisherName": {
+            "required": true,
+            "type": "string"
+        },
+        "offer": {
+            "required": true,
+            "type": "string"
+        },
+        "skus": {
+            "required": true,
+            "type": "string"
+        },
+        "version": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

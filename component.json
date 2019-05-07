@@ -1,0 +1,1597 @@
+{
+    "title": "ComputeManagementClient",
+    "description": "The Compute Management Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/compute/2018-10-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Gets a list of compute operations.",
+            "description": "Gets a list of compute operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_ListBySubscription": {
+            "main": "./lib/actions/AvailabilitySets_ListBySubscription.js",
+            "title": "Lists all availability sets in a subscription.",
+            "description": "Lists all availability sets in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_ListBySubscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_List": {
+            "main": "./lib/actions/Images_List.js",
+            "title": "Gets the list of Images in the subscription. Use nextLink property in the response to get the next page of Images. Do this till nextLink is null to fetch all the Images.",
+            "description": "Gets the list of Images in the subscription. Use nextLink property in the response to get the next page of Images. Do this till nextLink is null to fetch all the Images.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LogAnalytics_ExportRequestRateByInterval": {
+            "main": "./lib/actions/LogAnalytics_ExportRequestRateByInterval.js",
+            "title": "Export logs that show Api requests made by this subscription in the given time window to show throttling activities.",
+            "description": "Export logs that show Api requests made by this subscription in the given time window to show throttling activities.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LogAnalytics_ExportRequestRateByInterval.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LogAnalytics_ExportThrottledRequests": {
+            "main": "./lib/actions/LogAnalytics_ExportThrottledRequests.js",
+            "title": "Export logs that show total throttled Api requests for this subscription in the given time window.",
+            "description": "Export logs that show total throttled Api requests for this subscription in the given time window.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LogAnalytics_ExportThrottledRequests.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineImages_ListPublishers": {
+            "main": "./lib/actions/VirtualMachineImages_ListPublishers.js",
+            "title": "Gets a list of virtual machine image publishers for the specified Azure location.",
+            "description": "Gets a list of virtual machine image publishers for the specified Azure location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineImages_ListPublishers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensionImages_ListTypes": {
+            "main": "./lib/actions/VirtualMachineExtensionImages_ListTypes.js",
+            "title": "Gets a list of virtual machine extension image types.",
+            "description": "Gets a list of virtual machine extension image types.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensionImages_ListTypes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensionImages_ListVersions": {
+            "main": "./lib/actions/VirtualMachineExtensionImages_ListVersions.js",
+            "title": "Gets a list of virtual machine extension image versions.",
+            "description": "Gets a list of virtual machine extension image versions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensionImages_ListVersions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensionImages_Get": {
+            "main": "./lib/actions/VirtualMachineExtensionImages_Get.js",
+            "title": "Gets a virtual machine extension image.",
+            "description": "Gets a virtual machine extension image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensionImages_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineImages_ListOffers": {
+            "main": "./lib/actions/VirtualMachineImages_ListOffers.js",
+            "title": "Gets a list of virtual machine image offers for the specified location and publisher.",
+            "description": "Gets a list of virtual machine image offers for the specified location and publisher.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineImages_ListOffers.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineImages_ListSkus": {
+            "main": "./lib/actions/VirtualMachineImages_ListSkus.js",
+            "title": "Gets a list of virtual machine image SKUs for the specified location, publisher, and offer.",
+            "description": "Gets a list of virtual machine image SKUs for the specified location, publisher, and offer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineImages_ListSkus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineImages_List": {
+            "main": "./lib/actions/VirtualMachineImages_List.js",
+            "title": "Gets a list of all virtual machine image versions for the specified location, publisher, offer, and SKU.",
+            "description": "Gets a list of all virtual machine image versions for the specified location, publisher, offer, and SKU.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineImages_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineImages_Get": {
+            "main": "./lib/actions/VirtualMachineImages_Get.js",
+            "title": "Gets a virtual machine image.",
+            "description": "Gets a virtual machine image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineImages_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Usage_List": {
+            "main": "./lib/actions/Usage_List.js",
+            "title": "Gets, for the specified location, the current compute resource usage information as well as the limits for compute resources under the subscription.",
+            "description": "Gets, for the specified location, the current compute resource usage information as well as the limits for compute resources under the subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Usage_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ListByLocation": {
+            "main": "./lib/actions/VirtualMachines_ListByLocation.js",
+            "title": "Gets all the virtual machines under the specified subscription for the specified location.",
+            "description": "Gets all the virtual machines under the specified subscription for the specified location.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ListByLocation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineSizes_List": {
+            "main": "./lib/actions/VirtualMachineSizes_List.js",
+            "title": "This API is deprecated. Use [Resources Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)",
+            "description": "This API is deprecated. Use [Resources Skus](https://docs.microsoft.com/en-us/rest/api/compute/resourceskus/list)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineSizes_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_ListAll": {
+            "main": "./lib/actions/VirtualMachineScaleSets_ListAll.js",
+            "title": "Gets a list of all VM Scale Sets in the subscription, regardless of the associated resource group. Use nextLink property in the response to get the next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM Scale Sets.",
+            "description": "Gets a list of all VM Scale Sets in the subscription, regardless of the associated resource group. Use nextLink property in the response to get the next page of VM Scale Sets. Do this till nextLink is null to fetch all the VM Scale Sets.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ListAll": {
+            "main": "./lib/actions/VirtualMachines_ListAll.js",
+            "title": "Lists all of the virtual machines in the specified subscription. Use the nextLink property in the response to get the next page of virtual machines.",
+            "description": "Lists all of the virtual machines in the specified subscription. Use the nextLink property in the response to get the next page of virtual machines.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_List": {
+            "main": "./lib/actions/AvailabilitySets_List.js",
+            "title": "Lists all availability sets in a resource group.",
+            "description": "Lists all availability sets in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_Delete": {
+            "main": "./lib/actions/AvailabilitySets_Delete.js",
+            "title": "Delete an availability set.",
+            "description": "Delete an availability set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_Get": {
+            "main": "./lib/actions/AvailabilitySets_Get.js",
+            "title": "Retrieves information about an availability set.",
+            "description": "Retrieves information about an availability set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_Update": {
+            "main": "./lib/actions/AvailabilitySets_Update.js",
+            "title": "Update an availability set.",
+            "description": "Update an availability set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_CreateOrUpdate": {
+            "main": "./lib/actions/AvailabilitySets_CreateOrUpdate.js",
+            "title": "Create or update an availability set.",
+            "description": "Create or update an availability set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AvailabilitySets_ListAvailableSizes": {
+            "main": "./lib/actions/AvailabilitySets_ListAvailableSizes.js",
+            "title": "Lists all available virtual machine sizes that can be used to create a new virtual machine in an existing availability set.",
+            "description": "Lists all available virtual machine sizes that can be used to create a new virtual machine in an existing availability set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AvailabilitySets_ListAvailableSizes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_ListByResourceGroup": {
+            "main": "./lib/actions/Images_ListByResourceGroup.js",
+            "title": "Gets the list of images under a resource group.",
+            "description": "Gets the list of images under a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_Delete": {
+            "main": "./lib/actions/Images_Delete.js",
+            "title": "Deletes an Image.",
+            "description": "Deletes an Image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_Get": {
+            "main": "./lib/actions/Images_Get.js",
+            "title": "Gets an image.",
+            "description": "Gets an image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_Update": {
+            "main": "./lib/actions/Images_Update.js",
+            "title": "Update an image.",
+            "description": "Update an image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Images_CreateOrUpdate": {
+            "main": "./lib/actions/Images_CreateOrUpdate.js",
+            "title": "Create or update an image.",
+            "description": "Create or update an image.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Images_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_List": {
+            "main": "./lib/actions/VirtualMachineScaleSets_List.js",
+            "title": "Gets a list of all VM scale sets under a resource group.",
+            "description": "Gets a list of all VM scale sets under a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_List": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_List.js",
+            "title": "Gets a list of all virtual machines in a VM scale sets.",
+            "description": "Gets a list of all virtual machines in a VM scale sets.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Delete": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Delete.js",
+            "title": "Deletes a VM scale set.",
+            "description": "Deletes a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Get": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Get.js",
+            "title": "Display information about a virtual machine scale set.",
+            "description": "Display information about a virtual machine scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Update": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Update.js",
+            "title": "Update a VM scale set.",
+            "description": "Update a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachineScaleSets_CreateOrUpdate.js",
+            "title": "Create or update a VM scale set.",
+            "description": "Create or update a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Deallocate": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Deallocate.js",
+            "title": "Deallocates specific virtual machines in a VM scale set. Shuts down the virtual machines and releases the compute resources. You are not billed for the compute resources that this virtual machine scale set deallocates.",
+            "description": "Deallocates specific virtual machines in a VM scale set. Shuts down the virtual machines and releases the compute resources. You are not billed for the compute resources that this virtual machine scale set deallocates.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Deallocate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_DeleteInstances": {
+            "main": "./lib/actions/VirtualMachineScaleSets_DeleteInstances.js",
+            "title": "Deletes virtual machines in a VM scale set.",
+            "description": "Deletes virtual machines in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_DeleteInstances.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade": {
+            "main": "./lib/actions/VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade.js",
+            "title": "Starts a rolling upgrade to move all extensions for all virtual machine scale set instances to the latest available extension version. Instances which are already running the latest extension versions are not affected.",
+            "description": "Starts a rolling upgrade to move all extensions for all virtual machine scale set instances to the latest available extension version. Instances which are already running the latest extension versions are not affected.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetRollingUpgrades_StartExtensionUpgrade.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetExtensions_List": {
+            "main": "./lib/actions/VirtualMachineScaleSetExtensions_List.js",
+            "title": "Gets a list of all extensions in a VM scale set.",
+            "description": "Gets a list of all extensions in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetExtensions_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetExtensions_Delete": {
+            "main": "./lib/actions/VirtualMachineScaleSetExtensions_Delete.js",
+            "title": "The operation to delete the extension.",
+            "description": "The operation to delete the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetExtensions_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetExtensions_Get": {
+            "main": "./lib/actions/VirtualMachineScaleSetExtensions_Get.js",
+            "title": "The operation to get the extension.",
+            "description": "The operation to get the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetExtensions_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetExtensions_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachineScaleSetExtensions_CreateOrUpdate.js",
+            "title": "The operation to create or update an extension.",
+            "description": "The operation to create or update an extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetExtensions_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_ForceRecoveryServiceFabricPlatformUpdateDomainWalk": {
+            "main": "./lib/actions/VirtualMachineScaleSets_ForceRecoveryServiceFabricPlatformUpdateDomainWalk.js",
+            "title": "Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.",
+            "description": "Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_ForceRecoveryServiceFabricPlatformUpdateDomainWalk.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_GetInstanceView": {
+            "main": "./lib/actions/VirtualMachineScaleSets_GetInstanceView.js",
+            "title": "Gets the status of a VM scale set instance.",
+            "description": "Gets the status of a VM scale set instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_GetInstanceView.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_UpdateInstances": {
+            "main": "./lib/actions/VirtualMachineScaleSets_UpdateInstances.js",
+            "title": "Upgrades one or more virtual machines to the latest SKU set in the VM scale set model.",
+            "description": "Upgrades one or more virtual machines to the latest SKU set in the VM scale set model.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_UpdateInstances.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade": {
+            "main": "./lib/actions/VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade.js",
+            "title": "Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version. Instances which are already running the latest available OS version are not affected.",
+            "description": "Starts a rolling upgrade to move all virtual machine scale set instances to the latest available Platform Image OS version. Instances which are already running the latest available OS version are not affected.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetRollingUpgrades_StartOSUpgrade.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_GetOSUpgradeHistory": {
+            "main": "./lib/actions/VirtualMachineScaleSets_GetOSUpgradeHistory.js",
+            "title": "Gets list of OS upgrades on a VM scale set instance.",
+            "description": "Gets list of OS upgrades on a VM scale set instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_GetOSUpgradeHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_PerformMaintenance": {
+            "main": "./lib/actions/VirtualMachineScaleSets_PerformMaintenance.js",
+            "title": "Perform maintenance on one or more virtual machines in a VM scale set. Operation on instances which are not eligible for perform maintenance will be failed. Please refer to best practices for more details: https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications",
+            "description": "Perform maintenance on one or more virtual machines in a VM scale set. Operation on instances which are not eligible for perform maintenance will be failed. Please refer to best practices for more details: https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_PerformMaintenance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_PowerOff": {
+            "main": "./lib/actions/VirtualMachineScaleSets_PowerOff.js",
+            "title": "Power off (stop) one or more virtual machines in a VM scale set. Note that resources are still attached and you are getting charged for the resources. Instead, use deallocate to release resources and avoid charges.",
+            "description": "Power off (stop) one or more virtual machines in a VM scale set. Note that resources are still attached and you are getting charged for the resources. Instead, use deallocate to release resources and avoid charges.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_PowerOff.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Redeploy": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Redeploy.js",
+            "title": "Redeploy one or more virtual machines in a VM scale set.",
+            "description": "Redeploy one or more virtual machines in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Redeploy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Reimage": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Reimage.js",
+            "title": "Reimages (upgrade the operating system) one or more virtual machines in a VM scale set which don't have a ephemeral OS disk, for virtual machines who have a ephemeral OS disk the virtual machine is reset to initial state.",
+            "description": "Reimages (upgrade the operating system) one or more virtual machines in a VM scale set which don't have a ephemeral OS disk, for virtual machines who have a ephemeral OS disk the virtual machine is reset to initial state.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Reimage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_ReimageAll": {
+            "main": "./lib/actions/VirtualMachineScaleSets_ReimageAll.js",
+            "title": "Reimages all the disks ( including data disks ) in the virtual machines in a VM scale set. This operation is only supported for managed disks.",
+            "description": "Reimages all the disks ( including data disks ) in the virtual machines in a VM scale set. This operation is only supported for managed disks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_ReimageAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Restart": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Restart.js",
+            "title": "Restarts one or more virtual machines in a VM scale set.",
+            "description": "Restarts one or more virtual machines in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Restart.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetRollingUpgrades_Cancel": {
+            "main": "./lib/actions/VirtualMachineScaleSetRollingUpgrades_Cancel.js",
+            "title": "Cancels the current virtual machine scale set rolling upgrade.",
+            "description": "Cancels the current virtual machine scale set rolling upgrade.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetRollingUpgrades_Cancel.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetRollingUpgrades_GetLatest": {
+            "main": "./lib/actions/VirtualMachineScaleSetRollingUpgrades_GetLatest.js",
+            "title": "Gets the status of the latest virtual machine scale set rolling upgrade.",
+            "description": "Gets the status of the latest virtual machine scale set rolling upgrade.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetRollingUpgrades_GetLatest.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_ListSkus": {
+            "main": "./lib/actions/VirtualMachineScaleSets_ListSkus.js",
+            "title": "Gets a list of SKUs available for your VM scale set, including the minimum and maximum VM instances allowed for each SKU.",
+            "description": "Gets a list of SKUs available for your VM scale set, including the minimum and maximum VM instances allowed for each SKU.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_ListSkus.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSets_Start": {
+            "main": "./lib/actions/VirtualMachineScaleSets_Start.js",
+            "title": "Starts one or more virtual machines in a VM scale set.",
+            "description": "Starts one or more virtual machines in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSets_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Delete": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Delete.js",
+            "title": "Deletes a virtual machine from a VM scale set.",
+            "description": "Deletes a virtual machine from a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Get": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Get.js",
+            "title": "Gets a virtual machine from a VM scale set.",
+            "description": "Gets a virtual machine from a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Update": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Update.js",
+            "title": "Updates a virtual machine of a VM scale set.",
+            "description": "Updates a virtual machine of a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Deallocate": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Deallocate.js",
+            "title": "Deallocates a specific virtual machine in a VM scale set. Shuts down the virtual machine and releases the compute resources it uses. You are not billed for the compute resources of this virtual machine once it is deallocated.",
+            "description": "Deallocates a specific virtual machine in a VM scale set. Shuts down the virtual machine and releases the compute resources it uses. You are not billed for the compute resources of this virtual machine once it is deallocated.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Deallocate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_GetInstanceView": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_GetInstanceView.js",
+            "title": "Gets the status of a virtual machine from a VM scale set.",
+            "description": "Gets the status of a virtual machine from a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_GetInstanceView.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_PerformMaintenance": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_PerformMaintenance.js",
+            "title": "Performs maintenance on a virtual machine in a VM scale set.",
+            "description": "Performs maintenance on a virtual machine in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_PerformMaintenance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_PowerOff": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_PowerOff.js",
+            "title": "Power off (stop) a virtual machine in a VM scale set. Note that resources are still attached and you are getting charged for the resources. Instead, use deallocate to release resources and avoid charges.",
+            "description": "Power off (stop) a virtual machine in a VM scale set. Note that resources are still attached and you are getting charged for the resources. Instead, use deallocate to release resources and avoid charges.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_PowerOff.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Redeploy": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Redeploy.js",
+            "title": "Redeploys a virtual machine in a VM scale set.",
+            "description": "Redeploys a virtual machine in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Redeploy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Reimage": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Reimage.js",
+            "title": "Reimages (upgrade the operating system) a specific virtual machine in a VM scale set.",
+            "description": "Reimages (upgrade the operating system) a specific virtual machine in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Reimage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_ReimageAll": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_ReimageAll.js",
+            "title": "Allows you to re-image all the disks ( including data disks ) in the a VM scale set instance. This operation is only supported for managed disks.",
+            "description": "Allows you to re-image all the disks ( including data disks ) in the a VM scale set instance. This operation is only supported for managed disks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_ReimageAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Restart": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Restart.js",
+            "title": "Restarts a virtual machine in a VM scale set.",
+            "description": "Restarts a virtual machine in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Restart.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineScaleSetVMs_Start": {
+            "main": "./lib/actions/VirtualMachineScaleSetVMs_Start.js",
+            "title": "Starts a virtual machine in a VM scale set.",
+            "description": "Starts a virtual machine in a VM scale set.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineScaleSetVMs_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_List": {
+            "main": "./lib/actions/VirtualMachines_List.js",
+            "title": "Lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.",
+            "description": "Lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Delete": {
+            "main": "./lib/actions/VirtualMachines_Delete.js",
+            "title": "The operation to delete a virtual machine.",
+            "description": "The operation to delete a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Get": {
+            "main": "./lib/actions/VirtualMachines_Get.js",
+            "title": "Retrieves information about the model view or the instance view of a virtual machine.",
+            "description": "Retrieves information about the model view or the instance view of a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Update": {
+            "main": "./lib/actions/VirtualMachines_Update.js",
+            "title": "The operation to update a virtual machine.",
+            "description": "The operation to update a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachines_CreateOrUpdate.js",
+            "title": "The operation to create or update a virtual machine.",
+            "description": "The operation to create or update a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Capture": {
+            "main": "./lib/actions/VirtualMachines_Capture.js",
+            "title": "Captures the VM by copying virtual hard disks of the VM and outputs a template that can be used to create similar VMs.",
+            "description": "Captures the VM by copying virtual hard disks of the VM and outputs a template that can be used to create similar VMs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Capture.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ConvertToManagedDisks": {
+            "main": "./lib/actions/VirtualMachines_ConvertToManagedDisks.js",
+            "title": "Converts virtual machine disks from blob-based to managed disks. Virtual machine must be stop-deallocated before invoking this operation.",
+            "description": "Converts virtual machine disks from blob-based to managed disks. Virtual machine must be stop-deallocated before invoking this operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ConvertToManagedDisks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Deallocate": {
+            "main": "./lib/actions/VirtualMachines_Deallocate.js",
+            "title": "Shuts down the virtual machine and releases the compute resources. You are not billed for the compute resources that this virtual machine uses.",
+            "description": "Shuts down the virtual machine and releases the compute resources. You are not billed for the compute resources that this virtual machine uses.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Deallocate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensions_List": {
+            "main": "./lib/actions/VirtualMachineExtensions_List.js",
+            "title": "The operation to get all extensions of a Virtual Machine.",
+            "description": "The operation to get all extensions of a Virtual Machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensions_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensions_Delete": {
+            "main": "./lib/actions/VirtualMachineExtensions_Delete.js",
+            "title": "The operation to delete the extension.",
+            "description": "The operation to delete the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensions_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensions_Get": {
+            "main": "./lib/actions/VirtualMachineExtensions_Get.js",
+            "title": "The operation to get the extension.",
+            "description": "The operation to get the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensions_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensions_Update": {
+            "main": "./lib/actions/VirtualMachineExtensions_Update.js",
+            "title": "The operation to update the extension.",
+            "description": "The operation to update the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensions_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachineExtensions_CreateOrUpdate": {
+            "main": "./lib/actions/VirtualMachineExtensions_CreateOrUpdate.js",
+            "title": "The operation to create or update the extension.",
+            "description": "The operation to create or update the extension.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachineExtensions_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Generalize": {
+            "main": "./lib/actions/VirtualMachines_Generalize.js",
+            "title": "Sets the state of the virtual machine to generalized.",
+            "description": "Sets the state of the virtual machine to generalized.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Generalize.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_InstanceView": {
+            "main": "./lib/actions/VirtualMachines_InstanceView.js",
+            "title": "Retrieves information about the run-time state of a virtual machine.",
+            "description": "Retrieves information about the run-time state of a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_InstanceView.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_PerformMaintenance": {
+            "main": "./lib/actions/VirtualMachines_PerformMaintenance.js",
+            "title": "The operation to perform maintenance on a virtual machine.",
+            "description": "The operation to perform maintenance on a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_PerformMaintenance.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_PowerOff": {
+            "main": "./lib/actions/VirtualMachines_PowerOff.js",
+            "title": "The operation to power off (stop) a virtual machine. The virtual machine can be restarted with the same provisioned resources. You are still charged for this virtual machine.",
+            "description": "The operation to power off (stop) a virtual machine. The virtual machine can be restarted with the same provisioned resources. You are still charged for this virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_PowerOff.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Redeploy": {
+            "main": "./lib/actions/VirtualMachines_Redeploy.js",
+            "title": "The operation to redeploy a virtual machine.",
+            "description": "The operation to redeploy a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Redeploy.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Reimage": {
+            "main": "./lib/actions/VirtualMachines_Reimage.js",
+            "title": "Reimages the virtual machine which has an ephemeral OS disk back to its initial state.",
+            "description": "Reimages the virtual machine which has an ephemeral OS disk back to its initial state.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Reimage.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Restart": {
+            "main": "./lib/actions/VirtualMachines_Restart.js",
+            "title": "The operation to restart a virtual machine.",
+            "description": "The operation to restart a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Restart.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_Start": {
+            "main": "./lib/actions/VirtualMachines_Start.js",
+            "title": "The operation to start a virtual machine.",
+            "description": "The operation to start a virtual machine.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_Start.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "VirtualMachines_ListAvailableSizes": {
+            "main": "./lib/actions/VirtualMachines_ListAvailableSizes.js",
+            "title": "Lists all available virtual machine sizes to which the specified virtual machine can be resized.",
+            "description": "Lists all available virtual machine sizes to which the specified virtual machine can be resized.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/VirtualMachines_ListAvailableSizes.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

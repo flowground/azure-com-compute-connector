@@ -1,0 +1,206 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmExtensionName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The Resource model definition.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "location"
+                    ],
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Describes a Virtual Machine Extension.",
+            "properties": {
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Describes the properties of a Virtual Machine Extension.",
+                    "properties": {
+                        "autoUpgradeMinorVersion": {
+                            "description": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.",
+                            "type": "boolean"
+                        },
+                        "forceUpdateTag": {
+                            "description": "How the extension handler should be forced to update even if the extension configuration has not changed.",
+                            "type": "string"
+                        },
+                        "instanceView": {
+                            "description": "The virtual machine extension instance view.",
+                            "properties": {
+                                "name": {
+                                    "description": "The virtual machine extension name.",
+                                    "type": "string"
+                                },
+                                "statuses": {
+                                    "description": "The resource status information.",
+                                    "items": {
+                                        "description": "Instance view status.",
+                                        "properties": {
+                                            "code": {
+                                                "description": "The status code.",
+                                                "type": "string"
+                                            },
+                                            "displayStatus": {
+                                                "description": "The short localizable label for the status.",
+                                                "type": "string"
+                                            },
+                                            "level": {
+                                                "description": "The level code.",
+                                                "enum": [
+                                                    "Info",
+                                                    "Warning",
+                                                    "Error"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": false,
+                                                    "name": "StatusLevelTypes"
+                                                }
+                                            },
+                                            "message": {
+                                                "description": "The detailed status message, including for alerts and error messages.",
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "description": "The time of the status.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "substatuses": {
+                                    "description": "The resource status information.",
+                                    "items": {
+                                        "description": "Instance view status.",
+                                        "properties": {
+                                            "code": {
+                                                "description": "The status code.",
+                                                "type": "string"
+                                            },
+                                            "displayStatus": {
+                                                "description": "The short localizable label for the status.",
+                                                "type": "string"
+                                            },
+                                            "level": {
+                                                "description": "The level code.",
+                                                "enum": [
+                                                    "Info",
+                                                    "Warning",
+                                                    "Error"
+                                                ],
+                                                "type": "string",
+                                                "x-ms-enum": {
+                                                    "modelAsString": false,
+                                                    "name": "StatusLevelTypes"
+                                                }
+                                            },
+                                            "message": {
+                                                "description": "The detailed status message, including for alerts and error messages.",
+                                                "type": "string"
+                                            },
+                                            "time": {
+                                                "description": "The time of the status.",
+                                                "format": "date-time",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "type": {
+                                    "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\".",
+                                    "type": "string"
+                                },
+                                "typeHandlerVersion": {
+                                    "description": "Specifies the version of the script handler.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "protectedSettings": {
+                            "description": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.",
+                            "type": "object"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state, which only appears in the response.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "publisher": {
+                            "description": "The name of the extension handler publisher.",
+                            "type": "string"
+                        },
+                        "settings": {
+                            "description": "Json formatted public settings for the extension.",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Specifies the type of the extension; an example is \"CustomScriptExtension\".",
+                            "type": "string"
+                        },
+                        "typeHandlerVersion": {
+                            "description": "Specifies the version of the script handler.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

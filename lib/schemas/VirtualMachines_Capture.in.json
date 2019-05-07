@@ -1,0 +1,44 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Capture Virtual Machine parameters.",
+            "properties": {
+                "destinationContainerName": {
+                    "description": "The destination container name.",
+                    "type": "string"
+                },
+                "overwriteVhds": {
+                    "description": "Specifies whether to overwrite the destination virtual hard disk, in case of conflict.",
+                    "type": "boolean"
+                },
+                "vhdPrefix": {
+                    "description": "The captured virtual hard disk's name prefix.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "vhdPrefix",
+                "destinationContainerName",
+                "overwriteVhds"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

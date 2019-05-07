@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "vmScaleSetName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "platformUpdateDomain": {
+            "required": true,
+            "type": "integer"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

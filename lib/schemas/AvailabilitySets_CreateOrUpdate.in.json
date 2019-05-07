@@ -1,0 +1,155 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "availabilitySetName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The Resource model definition.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "location"
+                    ],
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Manage the availability of virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). <br><br> For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) <br><br> Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.",
+            "properties": {
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "The instance view of a resource.",
+                    "properties": {
+                        "platformFaultDomainCount": {
+                            "description": "Fault Domain count.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "platformUpdateDomainCount": {
+                            "description": "Update Domain count.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "statuses": {
+                            "description": "The resource status information.",
+                            "items": {
+                                "description": "Instance view status.",
+                                "properties": {
+                                    "code": {
+                                        "description": "The status code.",
+                                        "type": "string"
+                                    },
+                                    "displayStatus": {
+                                        "description": "The short localizable label for the status.",
+                                        "type": "string"
+                                    },
+                                    "level": {
+                                        "description": "The level code.",
+                                        "enum": [
+                                            "Info",
+                                            "Warning",
+                                            "Error"
+                                        ],
+                                        "type": "string",
+                                        "x-ms-enum": {
+                                            "modelAsString": false,
+                                            "name": "StatusLevelTypes"
+                                        }
+                                    },
+                                    "message": {
+                                        "description": "The detailed status message, including for alerts and error messages.",
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "description": "The time of the status.",
+                                        "format": "date-time",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "readOnly": true,
+                            "type": "array"
+                        },
+                        "virtualMachines": {
+                            "description": "A list of references to all virtual machines in the availability set.",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Resource Id",
+                                        "type": "string"
+                                    }
+                                },
+                                "x-ms-azure-resource": true,
+                                "type": "object"
+                            },
+                            "type": "array"
+                        }
+                    }
+                },
+                "sku": {
+                    "description": "Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.",
+                    "properties": {
+                        "capacity": {
+                            "description": "Specifies the number of virtual machines in the scale set.",
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "name": {
+                            "description": "The sku name.",
+                            "type": "string"
+                        },
+                        "tier": {
+                            "description": "Specifies the tier of virtual machines in a scale set.<br /><br /> Possible Values:<br /><br /> **Standard**<br /><br /> **Basic**",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
