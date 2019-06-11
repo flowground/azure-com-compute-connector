@@ -5,7 +5,7 @@
 A generated **flow**ground connector for the ComputeManagementClient API (version 2018-10-01).
 
 Generated from: https://api.apis.guru/v2/specs/azure.com/compute/2018-10-01/swagger.json<br/>
-Generated at: 2019-05-07T17:37:50+03:00
+Generated at: 2019-06-11T18:13:48+03:00
 
 ## API Description
 
